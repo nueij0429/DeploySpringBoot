@@ -1,5 +1,6 @@
-package com.employee.deploy.exception;
+package com.employee.deploy.exception.advice;
 
+import com.employee.deploy.exception.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -17,16 +18,16 @@ import java.util.Map;
 @Slf4j
 public class DefaultExceptionAdvice {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorObject> handleResourceNotFoundException(ResourceNotFoundException ex) {
-        ErrorObject errorObject = new ErrorObject();
-        errorObject.setStatusCode(ex.getHttpStatus().value());
-        errorObject.setMessage(ex.getMessage());
-
-        log.error(ex.getMessage(), ex);
-
-        return new ResponseEntity<ErrorObject>(errorObject, HttpStatusCode.valueOf(ex.getHttpStatus().value()));
-    }
+//    @ExceptionHandler(ResourceNotFoundException.class)
+//    public ResponseEntity<ErrorObject> handleResourceNotFoundException(ResourceNotFoundException ex) {
+//        ErrorObject errorObject = new ErrorObject();
+//        errorObject.setStatusCode(ex.getHttpStatus().value());
+//        errorObject.setMessage(ex.getMessage());
+//
+//        log.error(ex.getMessage(), ex);
+//
+//        return new ResponseEntity<ErrorObject>(errorObject, HttpStatusCode.valueOf(ex.getHttpStatus().value()));
+//    }
 
     /*
         Spring6 버전에 추가된 ProblemDetail 객체에 에러정보를 담아서 리턴하는 방법
