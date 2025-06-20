@@ -15,7 +15,7 @@ on:
     branches: [ "main" ]
 
 env:
-  DOCKER_IMAGE: empbackend
+  DOCKER_IMAGE: springbootreactjs
   DOCKER_TAG: 0.3
 
 jobs:
@@ -31,9 +31,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven using prod profile
-        run: mvn clean install -Dmaven.test.skip=true -Dspring.profiles.active=prod
-
+      - name: Build with Maven
+        run: mvn clean install -Dmaven.test.skip=true
+      - name: Build with Maven
+        run: mvn clean install -Dmaven.test.skip=true
 
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
